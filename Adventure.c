@@ -28,7 +28,7 @@
  *                 +--------+      +----+  +----+ +---------+
  *                 |        |      |            | |         |
  *                 |   3    +------+     4      +-+   5     |
- *                 |  Dark     2                    Spinach |
+ *                 |  Dark     2                    Broccoli |
  *                 |        +-+  +-+            +-+         |
  *                 |        | |  | |            | |         |
  *                 +--------+ |  | +------------+ +---------+
@@ -44,7 +44,7 @@ int delay = DELAY;
 int location = 1;
 int haveFlowers = 0;
 int haveSword = 0;
-int ateSpinach = 0;
+int ateBroccoli = 0;
 int dead = 0;
 int killedSlug = 0;
 int killedDragon = 0;
@@ -138,9 +138,9 @@ void doLocation2()
 void doLocation3()
 {
     printf("It's really dark in here.\n");
-    sleep(2*delay);
+    
     printf("You can't see a thing.\n");
-    sleep(2*delay);
+    
     printf("You bumble around the room and finally find your way out.\n");
     location = 2;
     doMove();
@@ -177,21 +177,21 @@ void doLocation4()
 
 void doLocation5()
 {
-    if (!ateSpinach)
+    if (!ateBroccoli)
     {
         printf("You are in a room.\n");
-        printf("You see a can of spinach.\n");
+        printf("You see a can of Broccoli.\n");
     }
     else
     {
-        printf("You are in a room with an empty can of spinach.\n");
+        printf("You are in a room with an empty can of Broccoli.\n");
     }
     printf("There is a hallway to the west.\n");
     printf("What do you do?\n");
     printf("1) Go west\n");
-    if (!ateSpinach)
+    if (!ateBroccoli)
     {
-        printf("2) Eat spinach\n");
+        printf("2) Eat Broccoli\n");
     }
     printf("? ");
     action = getAction();
@@ -201,11 +201,11 @@ void doLocation5()
             location = 4;
             break;
         case 2 :
-            if (!ateSpinach)
+            if (!ateBroccoli)
             {
                 printf("Yuck!\n");
                 printf("You feel much stronger\n");
-                ateSpinach = 1;
+                ateBroccoli = 1;
                 break;
             }
         default :
@@ -386,11 +386,11 @@ void doLocation10()
     if (!killedDragon)
     {
         printf("You are in a room.\n");
-        sleep(2*delay);
+        
         printf("You see a blood thirsty dragon!!!\n");
-        sleep(2*delay);
+        
         printf("You wet your pants a little.\n");
-        sleep(2*delay);
+        
         printf("What do you do?\n");
         printf("1) Run away\n");
         printf("2) Fight dragon\n");
@@ -408,39 +408,39 @@ void doLocation10()
                 if (!haveSword)
                 {
                     printf("You lunge at the dragon.\n");
-                    sleep(2*delay);
+                    
                     printf("He giggles as you desperately claw at him\n");
                     printf("with your bare hands.\n");
-                    sleep(2*delay);
-                    printf("He then devours you in one bite.\n");
-                    sleep(2*delay);
+                    
+                    printf("He then eats you in one bite.\n");
+                    
                     printf("You're dead.\n");
                     dead = 1;
                 }
-                else if (!ateSpinach)
+                else if (!ateBroccoli)
                 {
                     printf("You lunge at the dragon swinging your sword.\n");
-                    sleep(2*delay);
-                    printf("You don't have the strength "
-                           "to pierce his scales\n");
-                    sleep(2*delay);
+                    
+                    printf("You don't have the strength to pierce his scales\n"
+                           "(you didn't eat broccoli).\n");
+                    
                     printf("The dragon breathes fire and "
                            "burns you to a crisp.\n");
-                    sleep(2*delay);
+                    
                     printf("You're dead.\n");
                     dead = 1;
                 }
                 else
                 {
                     printf("You lunge at the dragon swinging your sword.\n");
-                    sleep(2*delay);
+                    
                     printf("You drive your sword deep into "
-                           "the dragon's cold, black heart.\n");
-                    sleep(2*delay);
+                           "the dragon's heart.\n");
+                    
                     printf("The dragon gasps his last breath...\n");
-                    sleep(2*delay);
+                    
                     printf("and falls down dead.\n");
-                    sleep(2*delay);
+                    
                     killedDragon = 1;
                 }
                 break;
@@ -451,7 +451,7 @@ void doLocation10()
     }
     else
     {
-        printf("You are in a room with a carcass of a dead dragon.\n");
+        printf("You are in a room with the skeleton of a dead dragon.\n");
         printf("There is a hallway to the south and north.\n");
         printf("What do you do?\n");
         printf("1) Go north\n");
@@ -479,29 +479,29 @@ void doLocation11()
     if (!haveFlowers)
     {
         printf("You enter a room.\n");
-        sleep(2*delay);
-        printf("You see the most beautiful woman you have ever seen!\n");
-        sleep(2*delay);
+        
+        printf("You see the most beautiful woman ever!\n");
+        
         printf("She looks upset.\n");
-        sleep(2*delay);
+        
         printf("What!? No flowers!?\n");
-        sleep(2*delay);
+        
         printf("She furiously pushes you out of the room.\n");
         location = 10;
     }
     else
     {
         printf("You enter a room.\n");
-        sleep(2*delay);
+        
         printf("You see the most beautiful woman you have ever seen!\n");
-        sleep(2*delay);
+        
         printf("She runs toward you with her arms open.\n");
-        sleep(2*delay);
+        
         printf("She says, \"My hero!!!\"\n");
-        sleep(2*delay);
+        
         printf("\"What lovely flowers!\"\n");
-        sleep(2*delay);
-        printf("\"Take me out of this god forsaken hell hole!\"\n");
+        
+        printf("\"Rescue me now!!\"\n");
         savedPrincess = 1;
     }
     doMove();
@@ -510,13 +510,12 @@ void doLocation11()
 int main()
 {
     printf("The king calls out to all knights of the land.\n");
-    sleep(2*delay);
-    printf("His daughter, the princess, has been kidnapped "
-           "by an evil dragon.\n");
-    sleep(2*delay);
+    
+    printf("The princess has been kidnapped by an evil dragon.\n");
+    
     printf("The king promises the princess's hand in marriage to anyone "
            "who can save her.\n");
-    sleep(2*delay);
+    
     printf("You bravely accept his offer and head out into the dark forest.\n");
     doMove();
 
@@ -563,29 +562,26 @@ int main()
     if (savedPrincess)
     {
         printf("You have saved the princess.\n");
-        sleep(2*delay);
+        
         printf("You marry her and live happily ever after.\n");
-        sleep(2*delay);
+        
     }
     else if (dead)
     {
         printf("You have died.\n");
-        sleep(2*delay);
+        
         printf("For your bravery, the king erects a statue.\n");
-        sleep(2*delay);
-        printf("You have birds pooping on you for the rest of eternity.\n");
-        sleep(2*delay);
+        
     }
     else if (coward)
     {
         printf("You run away like a coward.\n");
-        sleep(2*delay);
+        
         printf("As you run, you hear the sound of a dragon "
                "munching on the princess.\n");
-        sleep(2*delay);
+        
         printf("For your cowardice, the king arrests you \n");
-        sleep(2*delay);
-        printf("and you spend the rest of your miserable "
-               "life in the dungeon.\n");
+        
+        printf("and you spend the rest of your life in the dungeon.\n");
     }
 }
